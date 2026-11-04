@@ -162,6 +162,14 @@
             <div class="inline-block border-b-2 border-forest pb-1 mb-8">
                 <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Thông Tin Tiệc Cưới</h2>
             </div>
+            
+            <!-- THÊM PHẦN HIỂN THỊ TÊN KHÁCH MỜI VÀO ĐÂY (VỊ TRÍ 2) -->
+            <div class="mb-8 border-b border-forest/10 pb-6 max-w-sm mx-auto">
+                <p class="font-sans text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Trân Trọng Kính Mời</p>
+                <h3 id="invite-guest-name" class="font-serif text-3xl font-bold text-forest-dark italic">Quý Khách</h3>
+                <p class="font-sans text-sm text-gray-600 mt-3">Đến dự tiệc chung vui cùng gia đình</p>
+            </div>
+
             <p class="font-sans text-xs uppercase tracking-widest text-gray-600 mb-2">Tiệc cưới sẽ diễn ra vào lúc:</p>
             <p class="font-serif text-4xl font-bold text-forest mb-6">5:30 PM</p>
             <div class="flex items-center justify-center gap-4 text-forest font-serif font-bold text-2xl mb-4">
@@ -252,9 +260,21 @@
             const audioToggleBtn = document.getElementById('audio-toggle-btn');
             const bgAudio = document.getElementById('bg-audio');
 
+            // CẬP NHẬT JAVASCRIPT: LẤY TÊN VÀ GẮN VÀO 2 VỊ TRÍ
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
-            if (guestName) document.getElementById('guest-greeting').textContent = `Thân Mời: ${decodeURIComponent(guestName.replace(/\+/g, ' '))}`;
+            
+            if (guestName) {
+                const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+                
+                // Vị trí 1: Bìa thiệp (Màn hình chờ)
+                const coverGreeting = document.getElementById('guest-greeting');
+                if (coverGreeting) coverGreeting.textContent = `Thân Mời: ${decodedName}`;
+                
+                // Vị trí 2: Bên trong thiệp (Phần thông tin tiệc cưới)
+                const inviteName = document.getElementById('invite-guest-name');
+                if (inviteName) inviteName.textContent = decodedName;
+            }
 
             openBtn.addEventListener('click', () => {
                 splashScreen.classList.add('opacity-0', 'pointer-events-none');
