@@ -12,18 +12,20 @@
                     colors: {
                         forest: { DEFAULT: '#113821', dark: '#0B2616', light: '#1A4D2E' },
                         cream: { DEFAULT: '#FDF9F0', dark: '#F5EEDC', light: '#FFFFFF' },
-                        gold: { DEFAULT: '#D4AF37', light: '#F3E5AB' } // Added gold color
+                        gold: { DEFAULT: '#D4AF37', light: '#F3E5AB' }
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        handwriting: ['"Dancing Script"', 'cursive'] // Changed to Dancing Script for full Vietnamese support
+                        cursive: ['"Dancing Script"', 'cursive']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Import Fonts: Cormorant Garamond, Plus Jakarta Sans, and Dancing Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body { -webkit-font-smoothing: antialiased; }
@@ -31,6 +33,25 @@
         ::-webkit-scrollbar-track { background: #FDF9F0; }
         ::-webkit-scrollbar-thumb { background: #113821; border-radius: 3px; }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        
+        /* Custom Swiper Styles */
+        .swiper-button-next, .swiper-button-prev {
+            color: rgba(253, 249, 240, 0.8) !important;
+            transform: scale(0.7);
+            transition: all 0.3s;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            color: #D4AF37 !important;
+            transform: scale(0.85);
+        }
+        .swiper-pagination-bullet {
+            background: #FDF9F0 !important;
+            opacity: 0.5;
+        }
+        .swiper-pagination-bullet-active {
+            background: #D4AF37 !important;
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-cream text-forest-dark font-sans antialiased selection:bg-forest selection:text-cream">
@@ -49,12 +70,10 @@
             <div class="h-px w-16 bg-cream/30 mx-auto my-4"></div>
             <p class="font-sans text-xs tracking-widest uppercase mb-1 text-cream/90">19 Tháng 12, 2026</p>
             
-            <!-- THAY ĐỔI 1: Tách "TRÂN TRỌNG KÍNH MỜI" và Tên Khách, đổi font chữ viết tay và màu vàng Gold -->
-            <div class="mt-6 mb-8 text-center">
-                <p class="font-sans text-xs uppercase tracking-[0.2em] text-cream/80 mb-2">Trân Trọng Kính Mời:</p>
-                <p id="guest-greeting" class="font-handwriting text-5xl font-bold text-gold mb-2 leading-tight px-4 drop-shadow-md">Quý Khách</p>
-            </div>
-
+            <!-- Vị trí hiển thị tên khách ngoài bìa -->
+            <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-cream/70 mt-6 mb-2">TRÂN TRỌNG KÍNH MỜI:</p>
+            <div id="cover-guest-name" class="font-cursive text-5xl text-gold font-bold mb-8 leading-snug drop-shadow-md min-h-[60px] px-2">Quý Khách</div>
+            
             <button id="open-invitation-btn" class="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm uppercase tracking-widest font-medium text-forest bg-cream rounded-full shadow-lg transition-all hover:scale-105 active:scale-95">
                 <span class="relative z-10 flex items-center gap-2">Mở Thiệp</span>
             </button>
@@ -72,6 +91,7 @@
     <!-- MAIN APP CONTAINER -->
     <main class="max-w-[680px] mx-auto min-h-screen bg-cream shadow-2xl relative overflow-hidden hidden" id="main-content">
         
+        <!-- HERO SECTION -->
         <section class="relative bg-forest text-cream pt-8 pb-16 px-6 text-center rounded-b-[40px] shadow-md">
             <p class="font-sans text-xs uppercase tracking-[0.3em] text-cream/80 mb-4">Welcome To Our Wedding</p>
             <div class="grid grid-cols-2 items-center justify-center max-w-sm mx-auto mb-4">
@@ -91,22 +111,18 @@
             </div>
         </section>
 
-        <section class="py-12 px-6 text-center text-forest-dark">
-            <div class="inline-block border-b-2 border-forest pb-1 mb-10">
-                <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Thông Tin Lễ Cưới</h2>
-            </div>
-            <div class="grid grid-cols-2 gap-4 max-w-xl mx-auto mb-12 pb-8 border-b border-forest/10">
+        <!-- THÔNG TIN GIA ĐÌNH -->
+        <section class="py-12 px-6 text-center text-forest-dark border-b border-forest/10">
+            <div class="grid grid-cols-2 gap-4 max-w-xl mx-auto mb-10 pb-8 border-b border-forest/10">
                 <div>
                     <p class="font-sans text-[10px] uppercase tracking-widest text-forest font-bold mb-2">Ông Bà</p>
                     <p class="font-serif text-xl font-bold text-forest-dark">Phan Thiện Tín</p>
                     <p class="font-serif text-xl font-bold text-forest-dark mb-2">Phạm Thị Bích Ngọc</p>
-                    <p class="font-sans text-sm text-gray-700 leading-relaxed">Chung cư Vũng Tàu Center<br>Vũng Tàu - TP. HCM</p>
                 </div>
                 <div>
                     <p class="font-sans text-[10px] uppercase tracking-widest text-forest font-bold mb-2">Ông Bà</p>
                     <p class="font-serif text-xl font-bold text-forest-dark">Trần Quang Đông</p>
                     <p class="font-serif text-xl font-bold text-forest-dark mb-2">Bùi Thị Kim Vi</p>
-                    <p class="font-sans text-sm text-gray-700 leading-relaxed">Phường Long Bình<br>TP. Đồng Nai</p>
                 </div>
             </div>
             <p class="font-sans text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">Trân trọng báo tin</p>
@@ -119,137 +135,135 @@
             
             <div class="max-w-md mx-auto space-y-6">
                 <div class="p-5 rounded-xl bg-cream-dark/40 border border-forest/10 shadow-sm">
-                    <p class="font-sans text-xs uppercase tracking-widest font-bold text-forest mb-2">Lễ Đám Hỏi Được Cử Hành Tại</p>
-                    <p class="font-serif text-xl font-bold text-forest-dark mb-3">Tư Gia Nhà Gái</p>
-                    <p class="font-sans text-sm text-gray-600 mb-3">Vào lúc 2:00 PM</p>
-                    <div class="flex items-center justify-center gap-4 text-forest font-serif font-bold text-lg">
-                        <span>Chủ Nhật</span>
-                        <span class="text-3xl px-3 py-1 bg-forest text-cream rounded-lg shadow">13</span>
-                        <span>Tháng 12</span>
+                    <p class="font-sans text-xs uppercase tracking-widest font-bold text-forest mb-2">Hôn Lễ Cử Hành Tại Tư Gia</p>
+                    <div class="flex items-center justify-center gap-4 text-forest font-serif font-bold text-lg mt-4">
+                        <span>11 GIỜ 00</span>
+                        <span class="text-xl px-3 py-1 bg-forest text-cream rounded shadow">•</span>
+                        <span>THỨ NĂM, 17.12.2026</span>
                     </div>
-                    <p class="font-sans text-xs text-gray-500 mt-3">2026 (Tức ngày 5 tháng 11 năm Bính Ngọ)</p>
-                </div>
-                <div class="p-5 rounded-xl bg-cream-dark/40 border border-forest/10 shadow-sm">
-                    <p class="font-sans text-xs uppercase tracking-widest font-bold text-forest mb-2">Lễ Thành Hôn Được Cử Hành Tại</p>
-                    <p class="font-serif text-xl font-bold text-forest-dark mb-3">Tư Gia Nhà Trai</p>
-                    <p class="font-sans text-sm text-gray-600 mb-3">Vào lúc 11:00 AM</p>
-                    <div class="flex items-center justify-center gap-4 text-forest font-serif font-bold text-lg">
-                        <span>Thứ Năm</span>
-                        <span class="text-3xl px-3 py-1 bg-forest text-cream rounded-lg shadow">17</span>
-                        <span>Tháng 12</span>
-                    </div>
-                    <p class="font-sans text-xs text-gray-500 mt-3">2026 (Tức ngày 9 tháng 11 năm Bính Ngọ)</p>
+                    <p class="font-sans text-xs text-gray-500 mt-3">Nhằm ngày 09 tháng 11 năm Bính Ngọ</p>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 bg-forest text-cream relative">
-            <div class="text-center mb-8">
-                <div class="inline-block border-b-2 border-cream/40 pb-1">
-                    <h2 class="font-serif text-2xl font-bold tracking-widest uppercase">Album Ảnh</h2>
-                </div>
-            </div>
-            <div class="swiper album-swiper max-w-xl mx-auto">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-xl aspect-[3/4] border border-cream/20">
-                        <img src="assets/images/gallery-1.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-xl aspect-[3/4] border border-cream/20">
-                        <img src="assets/images/gallery-2.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-xl aspect-[3/4] border border-cream/20">
-                        <img src="assets/images/gallery-3.jpg" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="swiper-pagination !bottom-[-30px]"></div>
-            </div>
-            <div class="h-10"></div>
-        </section>
-
+        <!-- THÔNG TIN TIỆC CƯỚI & KHÁCH MỜI BÊN TRONG -->
         <section class="py-12 px-6 text-center text-forest-dark">
-            <div class="inline-block border-b-2 border-forest pb-1 mb-8">
-                <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Thông Tin Tiệc Cưới</h2>
+            <div class="inline-block border-b-[1.5px] border-forest pb-2 mb-10">
+                <h2 class="font-serif text-2xl font-bold tracking-[0.15em] uppercase text-forest">Thông Tin Tiệc Cưới</h2>
             </div>
             
-            <!-- THAY ĐỔI 2: Đã thêm phần tên khách bên trong thiệp, có gạch chân nhẹ -->
-            <div class="mb-10 pb-8 border-b border-forest/10 max-w-md mx-auto">
-                <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Trân Trọng Kính Mời</p>
-                <h3 id="invite-guest-name" class="font-handwriting text-5xl font-bold text-forest-dark mb-3 px-4 leading-tight">Quý Khách</h3>
-                <p class="font-serif text-gray-600 text-lg">Đến dự tiệc chung vui cùng gia đình</p>
-            </div>
+            <!-- Vị trí hiển thị tên khách bên trong thiệp -->
+            <p class="font-sans text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">Trân trọng kính mời</p>
+            <h3 id="invite-guest-name" class="font-serif text-[28px] font-bold italic text-forest-dark mb-4 leading-tight px-4">Quý Khách</h3>
+            <p class="font-sans text-[13px] text-gray-600 mb-10 pb-8 border-b border-forest/10">Đến dự tiệc chung vui cùng gia đình</p>
 
-            <p class="font-sans text-xs uppercase tracking-widest text-gray-600 mb-2">Tiệc cưới sẽ diễn ra vào lúc:</p>
-            <p class="font-serif text-4xl font-bold text-forest mb-6">5:30 PM</p>
+            <p class="font-sans text-[11px] uppercase tracking-widest text-gray-500 mb-3">Tiệc cưới sẽ diễn ra vào lúc:</p>
+            <p class="font-serif text-4xl font-bold text-forest mb-6 drop-shadow-sm">5:30 PM</p>
+            
             <div class="flex items-center justify-center gap-4 text-forest font-serif font-bold text-2xl mb-4">
                 <span>Thứ Bảy</span>
-                <span class="text-4xl px-4 py-1.5 bg-forest text-cream rounded-xl shadow">19</span>
+                <span class="text-4xl px-4 py-1.5 bg-forest text-cream rounded-xl shadow-md">19</span>
                 <span>Tháng 12</span>
             </div>
             <p class="font-sans text-sm text-gray-600 mb-8">2026 (Tức ngày 11 tháng 11 năm Bính Ngọ)</p>
-            <div class="flex justify-center gap-8 font-sans text-sm uppercase tracking-wider text-gray-700 mb-10 border-y border-forest/10 py-4 max-w-sm mx-auto">
-                <div>Đón Khách:<br><span class="text-forest font-bold text-lg">5:30 PM</span></div>
-                <div>Khai Tiệc:<br><span class="text-forest font-bold text-lg">6:00 PM</span></div>
+            
+            <div class="flex justify-center gap-12 font-sans text-[11px] uppercase tracking-wider text-gray-600 mb-10 border-y border-forest/10 py-5 max-w-sm mx-auto">
+                <div>Đón Khách:<br><span class="text-forest font-bold text-lg mt-1 block">5:30 PM</span></div>
+                <div>Khai Tiệc:<br><span class="text-forest font-bold text-lg mt-1 block">6:00 PM</span></div>
             </div>
-            <div class="max-w-xs mx-auto bg-cream-dark/40 border border-forest/15 rounded-2xl p-5 shadow-sm mb-6">
+            
+            <!-- LỊCH THÁNG -->
+            <div class="max-w-[280px] mx-auto bg-cream-dark/30 border border-forest/15 rounded-2xl p-5 shadow-sm mb-6">
                 <p class="font-serif font-bold text-xl text-forest mb-4">Tháng 12 / 2026</p>
-                <div class="grid grid-cols-7 gap-1 font-sans text-xs text-gray-600 mb-3 font-semibold">
+                <div class="grid grid-cols-7 gap-1 font-sans text-[11px] text-gray-500 mb-4 font-semibold uppercase">
                     <span class="text-red-700">CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
                 </div>
                 <div class="grid grid-cols-7 gap-y-3 gap-x-1 font-sans text-sm text-forest-dark">
                     <span class="text-gray-300">29</span><span class="text-gray-300">30</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
                     <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
                     <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
-                    <span class="relative font-bold text-cream bg-forest rounded-full w-8 h-8 flex items-center justify-center mx-auto shadow">19 <span class="absolute -top-1 -right-1 text-[10px]">❤️</span></span>
+                    <span class="relative font-bold text-cream bg-forest rounded-full w-7 h-7 flex items-center justify-center mx-auto shadow-md">19 <span class="absolute -top-1 -right-1 text-[10px]">❤️</span></span>
                     <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
                     <span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span class="text-gray-300">1</span><span class="text-gray-300">2</span>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 bg-forest/5 border-t border-forest/10 px-6 text-center">
-            <div class="inline-block border-b-2 border-forest pb-1 mb-8">
-                <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Tiệc Cưới Sẽ Tổ Chức Tại</h2>
+        <!-- ALBUM ẢNH (CAROUSEL) -->
+        <section class="py-12 bg-forest text-cream relative">
+            <div class="text-center mb-8">
+                <div class="inline-block border-b-[1.5px] border-cream/40 pb-1">
+                    <h2 class="font-serif text-2xl font-bold tracking-[0.15em] uppercase">Album Ảnh</h2>
+                </div>
             </div>
-            <p class="font-serif font-bold text-xl text-forest-dark mb-2">NHÀ HÀNG TIỆC CƯỚI<br>AURORA EVENT CENTER</p>
-            <p class="font-sans text-sm text-gray-700 mb-8 max-w-sm mx-auto">169 đường Thùy Vân - Tòa nhà CSF<br>Phường Tam Thắng - Vũng Tàu</p>
+            
+            <div class="swiper album-swiper max-w-xl mx-auto px-10 relative">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] border border-cream/20">
+                        <img src="assets/images/gallery-1.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] border border-cream/20">
+                        <img src="assets/images/gallery-2.jpg" class="w-full h-full object-cover">
+                    </div>
+                    <div class="swiper-slide bg-forest-dark rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] border border-cream/20">
+                        <img src="assets/images/gallery-3.jpg" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="swiper-pagination !bottom-[-35px]"></div>
+                <div class="swiper-button-prev !left-2"></div>
+                <div class="swiper-button-next !right-2"></div>
+            </div>
+            <div class="h-12"></div>
+        </section>
+
+        <!-- ĐỊA ĐIỂM TỔ CHỨC -->
+        <section class="py-12 bg-cream border-t border-forest/10 px-6 text-center">
+            <div class="inline-block border-b-2 border-forest pb-1 mb-8">
+                <h2 class="font-serif text-xl font-bold tracking-[0.15em] uppercase text-forest">Aurora Event Center</h2>
+            </div>
+            <p class="font-sans text-[13px] text-gray-700 mb-8 max-w-sm mx-auto leading-relaxed">Sảnh Golden A<br>169 đường Thùy Vân, Phường Tam Thắng<br>Thành phố Vũng Tàu</p>
             <div class="max-w-lg mx-auto rounded-2xl overflow-hidden shadow-lg border border-forest/20 mb-8 h-72">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.183577312702!2d107.0827!3d10.3458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDIwJzQ1LjAiTiAxMDfCsDA0JzU3LjciRw!5e0!3m2!1svi!2svn!4v1600000000000!5m2!1svi!2svn" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <a href="https://maps.google.com/?q=Aurora+Event+Center+169+Thuy+Van+Vung+Tau" target="_blank" class="font-sans inline-flex items-center gap-2 px-8 py-3 bg-forest text-cream text-xs uppercase tracking-widest font-bold rounded-full shadow hover:bg-forest-light transition-all mb-4">
+            <a href="https://maps.google.com/?q=Aurora+Event+Center+169+Thuy+Van+Vung+Tau" target="_blank" class="font-sans inline-flex items-center gap-2 px-8 py-3.5 bg-forest text-cream text-[11px] uppercase tracking-[0.2em] font-bold rounded-full shadow hover:bg-forest-light transition-all mb-4">
                 Mở Bản Đồ
             </a>
         </section>
 
-        <!-- MODULE 4: SỔ LƯU BÚT (GUESTBOOK) -->
-        <section class="py-12 bg-cream border-t border-forest/10 px-6 text-center">
+        <!-- GUESTBOOK -->
+        <section class="py-12 bg-cream-dark/20 border-t border-forest/10 px-6 text-center">
             <div class="inline-block border-b-2 border-forest pb-1 mb-8">
                 <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Sổ Lưu Bút</h2>
             </div>
             
             <div class="max-w-md mx-auto text-left mb-10">
                 <form id="guestbook-form" class="space-y-4">
-                    <input type="text" id="guest-name" required placeholder="Nhập tên*" class="w-full px-4 py-3 bg-white border border-forest/20 rounded-xl font-sans text-sm focus:outline-none focus:border-forest text-forest-dark">
-                    <div class="relative">
-                        <textarea id="guest-message" required placeholder="Nhập lời chúc*" rows="3" class="w-full px-4 py-3 bg-white border border-forest/20 rounded-xl font-sans text-sm focus:outline-none focus:border-forest text-forest-dark resize-none"></textarea>
+                    <input type="text" id="guest-name" required placeholder="Nhập tên*" class="w-full px-4 py-3.5 bg-white border border-forest/20 rounded-xl font-sans text-sm focus:outline-none focus:border-forest text-forest-dark shadow-sm">
+                    <div class="relative shadow-sm rounded-xl">
+                        <textarea id="guest-message" required placeholder="Nhập lời chúc*" rows="3" class="w-full px-4 py-3.5 bg-white border border-forest/20 rounded-xl font-sans text-sm focus:outline-none focus:border-forest text-forest-dark resize-none"></textarea>
                         <button type="button" id="magic-wand-btn" class="absolute bottom-3 right-3 p-2 bg-cream text-forest rounded-full hover:bg-forest/10 transition-colors" title="Gợi ý lời chúc">🪄</button>
                     </div>
-                    <button type="submit" id="submit-wish-btn" class="w-full py-3.5 bg-forest text-cream font-sans text-xs uppercase tracking-widest font-bold rounded-xl shadow-md hover:bg-forest-light transition-colors">
+                    <button type="submit" id="submit-wish-btn" class="w-full py-4 bg-forest text-cream font-sans text-xs uppercase tracking-widest font-bold rounded-xl shadow-md hover:bg-forest-light transition-colors">
                         Gửi Lời Chúc
                     </button>
                 </form>
                 <p id="form-status" class="text-xs text-center mt-3 hidden font-sans"></p>
             </div>
 
-            <div id="wishes-container" class="max-w-md mx-auto space-y-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar text-left">
-                <div class="p-4 bg-white rounded-xl border border-forest/10 shadow-sm text-center">
+            <div id="wishes-container" class="max-w-md mx-auto space-y-4 max-h-[380px] overflow-y-auto pr-2 custom-scrollbar text-left">
+                <div class="p-5 bg-white rounded-xl border border-forest/10 shadow-sm text-center">
                     <p class="font-sans text-sm text-gray-500">Đang tải lời chúc...</p>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-forest-dark text-cream text-center py-12 px-6">
-            <p class="font-serif italic text-xl text-cream/80 mb-2">Sự hiện diện của quý khách</p>
-            <p class="font-sans text-xs uppercase tracking-widest text-cream/60">Là niềm vinh hạnh của gia đình chúng tôi!</p>
+        <!-- FOOTER -->
+        <footer class="bg-forest-dark text-cream text-center py-16 px-6">
+            <p class="font-serif text-[11px] uppercase tracking-[0.3em] text-cream/70 mb-4">Lời Cảm Ơn</p>
+            <p class="font-serif italic text-xl text-cream/90 mb-2">Sự hiện diện của quý khách</p>
+            <p class="font-sans text-[11px] uppercase tracking-widest text-cream/60">Là niềm vinh hạnh của gia đình chúng tôi!</p>
+            <div class="mt-8 font-serif text-3xl text-gold/80">囍</div>
         </footer>
 
     </main>
@@ -258,7 +272,6 @@
     <script>
         const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxBba8CfUv2xOj6UHLeq0ua5Zwc0M6cmat1zSoXL14-NqjENxhg7cfNTAAjXWaVdlwjHA/exec"; 
         
-        // Helper to retrieve user's owned wishes from Local Storage
         let myWishes = JSON.parse(localStorage.getItem('myWeddingWishes')) || [];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -268,31 +281,42 @@
             const audioToggleBtn = document.getElementById('audio-toggle-btn');
             const bgAudio = document.getElementById('bg-audio');
 
-            // CẬP NHẬT JAVASCRIPT: LẤY TÊN VÀ GẮN VÀO 2 VỊ TRÍ
+            // XỬ LÝ TÊN KHÁCH MỜI TỪ URL
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
             
             if (guestName) {
                 const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
-                
-                // Vị trí 1: Bìa thiệp (Màn hình chờ)
-                const coverGreeting = document.getElementById('guest-greeting');
-                if (coverGreeting) coverGreeting.textContent = `Thân Mời: ${decodedName}`;
-                
-                // Vị trí 2: Bên trong thiệp (Phần thông tin tiệc cưới)
+                const coverName = document.getElementById('cover-guest-name');
                 const inviteName = document.getElementById('invite-guest-name');
-                if (inviteName) inviteName.textContent = decodedName;
+                
+                // Chỉ điền tên, không còn chữ "Thân Mời:"
+                if(coverName) coverName.textContent = decodedName;
+                if(inviteName) inviteName.textContent = decodedName;
             }
 
+            // MỞ THIỆP & KHỞI TẠO SWIPER
             openBtn.addEventListener('click', () => {
                 splashScreen.classList.add('opacity-0', 'pointer-events-none');
                 setTimeout(() => {
                     splashScreen.style.display = 'none';
                     mainContent.classList.remove('hidden');
                     
+                    // Khởi tạo Album Ảnh (Swiper Carousel) với các nút điều hướng
                     if (typeof Swiper !== 'undefined') {
-                        new Swiper('.album-swiper', { effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto', coverflowEffect: { rotate: 15, stretch: 0, depth: 100, modifier: 1, slideShadows: false }, pagination: { el: '.swiper-pagination', clickable: true }, loop: true });
+                        new Swiper('.album-swiper', { 
+                            effect: 'coverflow', 
+                            grabCursor: true, 
+                            centeredSlides: true, 
+                            slidesPerView: 'auto', 
+                            coverflowEffect: { rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: true }, 
+                            pagination: { el: '.swiper-pagination', clickable: true },
+                            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                            loop: true 
+                        });
                     }
+                    
+                    // Tự động cuộn mượt mà
                     let autoScroll = setInterval(() => { window.scrollBy({ top: 1, left: 0, behavior: 'auto' }); }, 30); 
                     const stopScroll = () => { if (autoScroll) { clearInterval(autoScroll); autoScroll = null; } };
                     window.addEventListener('touchstart', stopScroll, { passive: true });
@@ -301,14 +325,16 @@
                 }, 700);
 
                 bgAudio.play().then(() => { audioToggleBtn.style.borderColor = '#113821'; }).catch(err => console.log("Autoplay restricted:", err));
-                fetchWishes(); // Load wishes on open
+                fetchWishes();
             });
 
+            // AUDIO CONTROLS
             audioToggleBtn.addEventListener('click', () => {
                 if (bgAudio.paused) { bgAudio.play(); audioToggleBtn.style.borderColor = '#113821'; } 
                 else { bgAudio.pause(); audioToggleBtn.style.borderColor = 'rgba(17,56,33,0.4)'; }
             });
 
+            // GUESTBOOK FORM & API
             const suggestions = [
                 "Chúc hai bạn trăm năm hạnh phúc, răng long đầu bạc!",
                 "Chúc cô dâu chú rể mãi mãi yêu thương nhau như ngày đầu.",
@@ -318,7 +344,6 @@
                 document.getElementById('guest-message').value = suggestions[Math.floor(Math.random() * suggestions.length)];
             });
 
-            // Submit Wish
             document.getElementById('guestbook-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 
@@ -326,7 +351,7 @@
                 const status = document.getElementById('form-status');
                 const name = document.getElementById('guest-name').value;
                 const message = document.getElementById('guest-message').value;
-                const wishId = "wish_" + Date.now(); // Generate unique ID
+                const wishId = "wish_" + Date.now(); 
 
                 btn.textContent = "Đang gửi...";
                 btn.disabled = true;
@@ -337,7 +362,6 @@
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams({ 'action': 'add', 'name': name, 'message': message, 'id': wishId })
                 }).then(() => {
-                    // Save ID to local storage so this browser remembers they own it
                     myWishes.push(wishId);
                     localStorage.setItem('myWeddingWishes', JSON.stringify(myWishes));
 
@@ -357,26 +381,24 @@
                 });
             });
 
-            // Fetch and display wishes
             window.fetchWishes = function() {
                 fetch(GOOGLE_SHEET_URL)
                     .then(res => res.json())
                     .then(data => {
                         const container = document.getElementById('wishes-container');
                         if(data.length === 0) {
-                            container.innerHTML = `<div class="p-4 bg-white rounded-xl border border-forest/10 shadow-sm text-center"><p class="font-sans text-sm text-gray-500">Hãy là người đầu tiên gửi lời chúc!</p></div>`;
+                            container.innerHTML = `<div class="p-5 bg-white rounded-xl border border-forest/10 shadow-sm text-center"><p class="font-sans text-sm text-gray-500">Hãy là người đầu tiên gửi lời chúc!</p></div>`;
                             return;
                         }
                         container.innerHTML = '';
                         data.forEach(item => {
-                            // Check if the current browser owns this wish
                             const isOwner = myWishes.includes(item.id);
-                            const deleteBtnHTML = isOwner ? `<button onclick="deleteWish('${item.id}')" class="text-xs text-red-400 hover:text-red-600 font-sans px-2 py-1 rounded bg-red-50 absolute top-3 right-3 transition-colors">Xóa</button>` : '';
+                            const deleteBtnHTML = isOwner ? `<button onclick="deleteWish('${item.id}')" class="text-[10px] text-red-400 hover:text-red-600 font-sans px-2 py-1 rounded bg-red-50 absolute top-4 right-4 transition-colors">Xóa</button>` : '';
 
                             container.innerHTML += `
-                                <div class="relative p-4 bg-white rounded-xl border border-forest/10 shadow-sm pr-12" id="card-${item.id}">
+                                <div class="relative p-5 bg-white rounded-xl border border-forest/10 shadow-sm pr-14" id="card-${item.id}">
                                     <p class="font-serif font-bold text-forest-dark text-lg mb-1">${item.name}</p>
-                                    <p class="font-sans text-sm text-gray-700">${item.message}</p>
+                                    <p class="font-sans text-[13px] text-gray-700 leading-relaxed">${item.message}</p>
                                     ${deleteBtnHTML}
                                 </div>
                             `;
@@ -384,12 +406,11 @@
                     }).catch(err => console.log("Failed to load wishes", err));
             }
 
-            // Global delete function
             window.deleteWish = function(wishId) {
                 if(!confirm("Bạn có chắc chắn muốn xóa lời chúc này?")) return;
                 
                 const card = document.getElementById(`card-${wishId}`);
-                if(card) card.style.opacity = '0.5'; // Visual feedback
+                if(card) card.style.opacity = '0.5'; 
 
                 fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
@@ -397,10 +418,9 @@
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams({ 'action': 'delete', 'id': wishId })
                 }).then(() => {
-                    // Remove from local storage array
                     myWishes = myWishes.filter(id => id !== wishId);
                     localStorage.setItem('myWeddingWishes', JSON.stringify(myWishes));
-                    setTimeout(fetchWishes, 1500); // Reload feed
+                    setTimeout(fetchWishes, 1500); 
                 });
             }
         });
