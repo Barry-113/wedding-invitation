@@ -71,8 +71,8 @@
             <p class="font-sans text-xs tracking-widest uppercase mb-1 text-cream/90">19 Tháng 12, 2026</p>
             
             <!-- Vị trí hiển thị tên khách ngoài bìa -->
-            <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-cream/70 mt-6 mb-2">TRÂN TRỌNG KÍNH MỜI:</p>
-            <div id="cover-guest-name" class="font-cursive text-5xl text-gold font-bold mb-8 leading-snug drop-shadow-md min-h-[60px] px-2">Quý Khách</div>
+            <p class="font-sans text-[13px] uppercase tracking-[0.25em] text-cream/80 mt-8 mb-3 font-semibold">TRÂN TRỌNG KÍNH MỜI:</p>
+            <div id="cover-guest-name" class="font-cursive text-5xl text-gold font-bold mb-10 leading-snug drop-shadow-md min-h-[60px] px-2">Quý Khách</div>
             
             <button id="open-invitation-btn" class="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm uppercase tracking-widest font-medium text-forest bg-cream rounded-full shadow-lg transition-all hover:scale-105 active:scale-95">
                 <span class="relative z-10 flex items-center gap-2">Mở Thiệp</span>
@@ -115,12 +115,12 @@
         <section class="py-12 px-6 text-center text-forest-dark border-b border-forest/10">
             <div class="grid grid-cols-2 gap-4 max-w-xl mx-auto mb-10 pb-8 border-b border-forest/10">
                 <div>
-                    <p class="font-sans text-[10px] uppercase tracking-widest text-forest font-bold mb-2">Ông Bà</p>
+                    <p class="font-sans text-[11px] uppercase tracking-widest text-forest font-bold mb-2">NHÀ TRAI</p>
                     <p class="font-serif text-xl font-bold text-forest-dark">Phan Thiện Tín</p>
                     <p class="font-serif text-xl font-bold text-forest-dark mb-2">Phạm Thị Bích Ngọc</p>
                 </div>
                 <div>
-                    <p class="font-sans text-[10px] uppercase tracking-widest text-forest font-bold mb-2">Ông Bà</p>
+                    <p class="font-sans text-[11px] uppercase tracking-widest text-forest font-bold mb-2">NHÀ GÁI</p>
                     <p class="font-serif text-xl font-bold text-forest-dark">Trần Quang Đông</p>
                     <p class="font-serif text-xl font-bold text-forest-dark mb-2">Bùi Thị Kim Vi</p>
                 </div>
@@ -232,14 +232,25 @@
 
         <!-- ĐỊA ĐIỂM TỔ CHỨC -->
         <section class="py-12 bg-cream border-t border-forest/10 px-6 text-center">
-            <div class="inline-block border-b-2 border-forest pb-1 mb-8">
-                <h2 class="font-serif text-xl font-bold tracking-[0.15em] uppercase text-forest">Aurora Event Center</h2>
+            
+            <!-- Tiêu đề có gạch ngang 2 bên như mẫu -->
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="h-[1.5px] bg-forest flex-1 max-w-[60px]"></div>
+                <h2 class="font-serif text-[18px] md:text-xl font-bold tracking-[0.15em] uppercase text-forest">Tiệc Cưới Sẽ Tổ Chức Tại</h2>
+                <div class="h-[1.5px] bg-forest flex-1 max-w-[60px]"></div>
             </div>
-            <p class="font-sans text-[13px] text-gray-700 mb-8 max-w-sm mx-auto leading-relaxed">Sảnh Golden A<br>169 đường Thùy Vân, Phường Tam Thắng<br>Thành phố Vũng Tàu</p>
+            
+            <p class="font-serif font-bold text-lg md:text-xl text-forest-dark mb-1">NHÀ HÀNG TIỆC CƯỚI</p>
+            <p class="font-serif font-bold text-lg md:text-xl text-forest-dark mb-4">AURORA EVENT CENTER</p>
+            
+            <p class="font-sans text-[13px] text-gray-700 mb-8 max-w-sm mx-auto leading-relaxed">
+                169 đường Thùy Vân - Tòa nhà CSF<br>Phường Tam Thắng - Vũng Tàu
+            </p>
+            
             <div class="max-w-lg mx-auto rounded-2xl overflow-hidden shadow-lg border border-forest/20 mb-8 h-72">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.183577312702!2d107.0827!3d10.3458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDIwJzQ1LjAiTiAxMDfCsDA0JzU3LjciRw!5e0!3m2!1svi!2svn!4v1600000000000!5m2!1svi!2svn" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <a href="https://maps.google.com/?q=Aurora+Event+Center+169+Thuy+Van+Vung+Tau" target="_blank" class="font-sans inline-flex items-center gap-2 px-8 py-3.5 bg-forest text-cream text-[11px] uppercase tracking-[0.2em] font-bold rounded-full shadow hover:bg-forest-light transition-all mb-4">
+            <a href="https://maps.google.com/?q=Aurora+Event+Center+169+Thuy+Van+Vung+Tau" target="_blank" class="font-sans inline-flex items-center justify-center px-10 py-3 bg-forest text-cream text-[11px] uppercase tracking-[0.2em] font-bold rounded-full shadow-md hover:bg-forest-light transition-all mb-4">
                 Mở Bản Đồ
             </a>
         </section>
@@ -303,7 +314,7 @@
                 const coverName = document.getElementById('cover-guest-name');
                 const inviteName = document.getElementById('invite-guest-name');
                 
-                // Chỉ điền tên, không còn chữ "Thân Mời:"
+                // Chỉ điền tên
                 if(coverName) coverName.textContent = decodedName;
                 if(inviteName) inviteName.textContent = decodedName;
             }
