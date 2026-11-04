@@ -11,17 +11,19 @@
                 extend: {
                     colors: {
                         forest: { DEFAULT: '#113821', dark: '#0B2616', light: '#1A4D2E' },
-                        cream: { DEFAULT: '#FDF9F0', dark: '#F5EEDC', light: '#FFFFFF' }
+                        cream: { DEFAULT: '#FDF9F0', dark: '#F5EEDC', light: '#FFFFFF' },
+                        gold: { DEFAULT: '#D4AF37', light: '#F3E5AB' } // Added gold color
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        handwriting: ['"Dancing Script"', 'cursive'] // Changed to Dancing Script for full Vietnamese support
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body { -webkit-font-smoothing: antialiased; }
@@ -46,7 +48,13 @@
             <h1 class="font-serif text-4xl font-semibold mb-4 tracking-wide">Thanh Vân</h1>
             <div class="h-px w-16 bg-cream/30 mx-auto my-4"></div>
             <p class="font-sans text-xs tracking-widest uppercase mb-1 text-cream/90">19 Tháng 12, 2026</p>
-            <p id="guest-greeting" class="font-serif italic text-xl text-cream/80 mb-8">Thân Mời Quý Khách</p>
+            
+            <!-- THAY ĐỔI 1: Tách "TRÂN TRỌNG KÍNH MỜI" và Tên Khách, đổi font chữ viết tay và màu vàng Gold -->
+            <div class="mt-6 mb-8 text-center">
+                <p class="font-sans text-xs uppercase tracking-[0.2em] text-cream/80 mb-2">Trân Trọng Kính Mời:</p>
+                <p id="guest-greeting" class="font-handwriting text-5xl font-bold text-gold mb-2 leading-tight px-4 drop-shadow-md">Quý Khách</p>
+            </div>
+
             <button id="open-invitation-btn" class="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm uppercase tracking-widest font-medium text-forest bg-cream rounded-full shadow-lg transition-all hover:scale-105 active:scale-95">
                 <span class="relative z-10 flex items-center gap-2">Mở Thiệp</span>
             </button>
@@ -163,11 +171,11 @@
                 <h2 class="font-serif text-2xl font-bold tracking-widest uppercase text-forest">Thông Tin Tiệc Cưới</h2>
             </div>
             
-            <!-- THÊM PHẦN HIỂN THỊ TÊN KHÁCH MỜI VÀO ĐÂY (VỊ TRÍ 2) -->
-            <div class="mb-8 border-b border-forest/10 pb-6 max-w-sm mx-auto">
-                <p class="font-sans text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Trân Trọng Kính Mời</p>
-                <h3 id="invite-guest-name" class="font-serif text-3xl font-bold text-forest-dark italic">Quý Khách</h3>
-                <p class="font-sans text-sm text-gray-600 mt-3">Đến dự tiệc chung vui cùng gia đình</p>
+            <!-- THAY ĐỔI 2: Đã thêm phần tên khách bên trong thiệp, có gạch chân nhẹ -->
+            <div class="mb-10 pb-8 border-b border-forest/10 max-w-md mx-auto">
+                <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Trân Trọng Kính Mời</p>
+                <h3 id="invite-guest-name" class="font-handwriting text-5xl font-bold text-forest-dark mb-3 px-4 leading-tight">Quý Khách</h3>
+                <p class="font-serif text-gray-600 text-lg">Đến dự tiệc chung vui cùng gia đình</p>
             </div>
 
             <p class="font-sans text-xs uppercase tracking-widest text-gray-600 mb-2">Tiệc cưới sẽ diễn ra vào lúc:</p>
